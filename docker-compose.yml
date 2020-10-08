@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: erika
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: creatorlinks
+    container_name: creatorlinks-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - creatorlinks
+
+  db:
+    image: mysql:8
+    container_name: creatorlinks-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - creatorlinks
+
+  nginx:
+    image: nginx:alpine
+    container_name: creatorlinks-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - creatorlinks
+
+networks:
+  creatorlinks:
+    driver: bridge
