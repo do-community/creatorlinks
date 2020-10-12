@@ -33,6 +33,18 @@ Now get your dev environment up and running by bringing up the docker containers
 docker-compose up -d
 ```
 
+You'll need to generate an App key and run the database migrations. Both can be executed with `docker-compose exec`:
+
+```shell
+docker-compose exec app php artisan key:generate
+```
+
+```shell
+docker-compose exec app php artisan migrate
+```
+
+This will create the database tables.
+
 After the environment is up and running, you'll be able to access the application from your browser at `http://localhost:8000`.
 
 To stop the environment, run:
