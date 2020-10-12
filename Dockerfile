@@ -28,6 +28,10 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
+# Install NPM for Livewire
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -yq nodejs build-essential
+
 # Set working directory
 WORKDIR /var/www
 
