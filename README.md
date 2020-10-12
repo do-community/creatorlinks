@@ -45,7 +45,15 @@ docker-compose exec app php artisan migrate
 
 This will create the database tables.
 
+Next, you'll need to install the NPM assets with:
+
+```shell
+docker-compose exec app npm install && npm run dev
+```
+
 After the environment is up and running, you'll be able to access the application from your browser at `http://localhost:8000`.
+
+Register a new user at `http://localhost:8000/register`.
 
 To stop the environment, run:
 
