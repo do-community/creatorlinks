@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware([ 'auth:sanctum', 'verified' ])->get('/links', function () {
+    return view('livewire.links.show');
+})->name('links');
