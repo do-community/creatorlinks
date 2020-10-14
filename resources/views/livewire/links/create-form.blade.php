@@ -12,21 +12,21 @@
             <!-- Link URL -->
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="url" value="{{ __('Link URL') }}" />
-                <x-jet-input id="url" type="text" class="mt-1 block w-full" wire:model.defer="url" />
+                <x-jet-input id="url" type="text" class="mt-1 block w-full" wire:model.defer="url" autocomplete="url" />
                 <x-jet-input-error for="url" class="mt-2" />
             </div>
 
             <!-- Link Description -->
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="description" value="{{ __('Link Description') }}" />
-                <x-jet-input id="description" type="text" class="mt-1 block w-full" wire:model.defer="description" />
+                <x-jet-input id="description" type="text" class="mt-1 block w-full" wire:model.defer="description" autocomplete="description" />
                 <x-jet-input-error for="description" class="mt-2" />
             </div>
 
             <!-- Link Thumbnail -->
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="thumbnail" value="{{ __('Link Thumbnail') }}" />
-                <x-jet-input id="thumbnail" type="file" class="mt-1 block w-full" wire:model.defer="thumbnail" />
+                <x-jet-input id="thumbnail" type="file" class="mt-1 block w-full" wire:model.defer="thumbnail" autocomplete="thumbnail" />
                 <x-jet-input-error for="thumbnail" class="mt-2" />
             </div>
         </div>
@@ -42,4 +42,3 @@
         </x-jet-button>
     </x-slot>
 </x-jet-form-section>
-

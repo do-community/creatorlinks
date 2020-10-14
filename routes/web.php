@@ -21,6 +21,12 @@ Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard', function ()
     return view('dashboard');
 })->name('dashboard');
 
-Route::middleware([ 'auth:sanctum', 'verified' ])->get('/links', function () {
+Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard/links/create', function () {
+    return view('livewire.links.create');
+})->name('links-create');
+
+Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard/links', function () {
     return view('livewire.links.show');
 })->name('links');
+
+

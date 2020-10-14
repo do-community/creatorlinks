@@ -17,6 +17,9 @@ class CreateLinksTable extends Migration
             $table->id();
             $table->string('url', 200);
             $table->text('description');
+            $table->string('thumbnail', 200);
+            $table->boolean('enabled')->default(true);
+            $table->unsignedBigInteger('clicks')->default(0);
             $table->timestamps();
         });
     }

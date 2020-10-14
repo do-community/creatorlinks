@@ -17,5 +17,20 @@ class Link extends Model
     protected $fillable = [
         'url',
         'description',
+        'thumbnail',
+        'enabled',
+        'clicks'
     ];
+
+    public function changeStatus(bool $status)
+    {
+        $this->enabled = $status;
+        $this->save();
+    }
+
+    public function addClick()
+    {
+        $this->clicks++;
+        $this->save();
+    }
 }
