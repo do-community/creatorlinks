@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Livewire\UserPage\Show as UserPage;
+use App\Http\Livewire\Links\Show as Links;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,20 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/user/{user}', UserPage::class);
+
 Route::get('/', function () {
     return view('index');
 });
 
-Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard/links/create', function () {
-    return view('livewire.links.create');
-})->name('links-create');
-
-Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard/links', function () {
+Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard/links',  function () {
     return view('livewire.links.show');
 })->name('links');
 
+Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 

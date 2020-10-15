@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Links;
 use App\Models\Link;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 
 class Create extends Component
 {
@@ -41,12 +42,14 @@ class Create extends Component
         $this->validate();
 
         $path = $this->thumbnail->storePublicly('images');
-
-        Link::create([
+        $link = new Link([
             'url' => $this->url,
             'description' => $this->description,
-            'thumbnail' => $path,
+            'thumbnail' => $path
         ]);
+
+        $user = Auth::user();
+        $user->links()->save($link);
 
         $this->emit('saved');
     }

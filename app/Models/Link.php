@@ -33,4 +33,9 @@ class Link extends Model
         $this->clicks++;
         $this->save();
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

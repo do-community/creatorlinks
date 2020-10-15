@@ -20,6 +20,7 @@ class CreateLinksTable extends Migration
             $table->string('thumbnail', 200);
             $table->boolean('enabled')->default(true);
             $table->unsignedBigInteger('clicks')->default(0);
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
