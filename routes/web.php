@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\UserPage\Show as UserPage;
-use App\Http\Livewire\Links\Show as Links;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,6 @@ use App\Http\Livewire\Links\Show as Links;
 |
 */
 
-Route::get('/{user}', function ($user) {
-    return "USER $user profile page";
-});
 
 Route::get('/', function () {
     return view('index');
@@ -30,3 +27,8 @@ Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard', function ()
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/{user}', function($user) {
+    $user_obj = User::where('username', $user)->first();
+
+    return view('livewire.user-page.show', ['user' => $user_obj]);
+});

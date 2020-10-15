@@ -7,6 +7,13 @@ use Livewire\Component;
 
 class Show extends Component
 {
+    public $user;
+
+    public function mount($user)
+    {
+        $this->user = User::where('username', $user)->first();
+    }
+
     public function render(User $user)
     {
         return view('livewire.user-page.show', ['user' => $user]);
