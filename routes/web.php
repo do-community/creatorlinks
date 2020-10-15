@@ -14,7 +14,9 @@ use App\Http\Livewire\Links\Show as Links;
 |
 */
 
-Route::get('/user/{user}', UserPage::class);
+Route::get('/{user}', function ($user) {
+    return "USER $user profile page";
+});
 
 Route::get('/', function () {
     return view('index');
