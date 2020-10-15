@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\UserPage;
 
 use App\Models\Link;
-use App\Models\User;
 use Livewire\Component;
 
 class Links extends Component
@@ -17,5 +16,10 @@ class Links extends Component
             ->get();
 
         return view('livewire.user-page.links', [ 'links' => $links ]);
+    }
+
+    public function addClick(Link $link)
+    {
+        $link->addClick();
     }
 }
