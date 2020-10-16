@@ -19,8 +19,10 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     </head>
     <body>
-        <div class="container">
-            @yield('content')
+        <div class="container sm:container mx-auto">
+            <main>
+                @yield('content')
+            </main>
         </div>
 
         @livewireScripts

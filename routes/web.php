@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Link;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,12 @@ use App\Models\User;
 
 
 Route::get('/', function () {
-    return view('index');
+    $links = Link::where('enabled', 1)
+        ->orderBy('created_at', 'desc')
+        ->take(10)
+        ->get();
+
+    return view('index', [ 'links' => $links ]);
 });
 
 Route::middleware([ 'auth:sanctum', 'verified' ])->get('/dashboard/links',  function () {
@@ -31,4 +37,4 @@ Route::get('/{user}', function($user) {
     $user_obj = User::where('username', $user)->first();
 
     return view('livewire.user-page.show', ['user' => $user_obj]);
-});
+})->name('userpage');
