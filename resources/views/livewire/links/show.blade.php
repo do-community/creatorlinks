@@ -13,7 +13,7 @@
         <x-jet-section-border />
 
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            @livewire('links.collection')
+            @livewire('links.collection', ['user' =>  Auth::user() ])
         </div>
     </div>
 </x-app-layout>

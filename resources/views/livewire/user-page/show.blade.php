@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title'){{ $user->login }}@endsection
+
 @section('content')
     <div class="max-w-6xl mx-auto py-10 sm:px-4 lg:px-6">
         <div class="w-full items-center" style="text-align: center">
@@ -9,7 +11,7 @@
         </div>
 
         <div class="py-10 sm:px-4 lg:px-6">
-            @livewire('user-page.links', ['user' => $user])
+            @livewire('user-page.links', ['user' => {{  $user->id }}])
         </div>
     </div>
 @endsection

@@ -2,11 +2,20 @@
 
 namespace App\Http\Livewire\Links;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Link;
 
 class Collection extends Component
 {
+    public $user;
+
+    public function mount()
+    {
+        $this->user = Auth::user();
+    }
+
     public function enable(Link $link)
     {
         $link->changeStatus(true);
@@ -24,7 +33,8 @@ class Collection extends Component
 
     public function render()
     {
-        $links = Link::all();
+        $links = Link::where('user_id', $this->user->id)
+            ->get();
 
         return view('livewire.links.collection', [ 'links' => $links ]);
     }
