@@ -11,7 +11,7 @@
         </div>
 
         <div class="py-10 sm:px-4 lg:px-6">
-            @livewire('user-page.links', ['user' => {{  $user->id }}])
+            @livewire('user-page.links', [ 'user' => $user ])
         </div>
     </div>
 @endsection
