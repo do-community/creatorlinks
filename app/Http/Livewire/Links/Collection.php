@@ -11,6 +11,8 @@ class Collection extends Component
 {
     public $user;
 
+    protected $listeners = ['saved' => 'render'];
+
     public function mount()
     {
         $this->user = Auth::user();
