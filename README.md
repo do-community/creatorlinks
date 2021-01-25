@@ -31,6 +31,11 @@ Now get your dev environment up and running by bringing up the docker containers
  
 ```shell
 docker-compose up -d
+
+```
+Next, you will need to install the dependencies with Composer. can be executed with `docker-compose exec`:
+```shell
+docker-compose exec app composer install
 ```
 
 You'll need to generate an App key and run the database migrations. Both can be executed with `docker-compose exec`:
